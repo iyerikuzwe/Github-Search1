@@ -6,7 +6,7 @@ import { ProfileService } from "../services/profile.service";
   templateUrl: "profile.component.html",
   providers: [ProfileService]
 })
-export class ProfileComponent {
+export class ProfileComponent {.
   user: any;
   repos: any;
   username: string;
