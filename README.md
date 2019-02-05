@@ -2,7 +2,7 @@
     This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.2.
 ## Author
     by Iyerikuzwe Regine
-## Description
+## Description.
     The website where users may enter a GitHub username into a form, submit it, and see names and descriptions of that person's public repositories.
 
 ## Development server
