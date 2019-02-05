@@ -6,7 +6,7 @@ export class ProfileService {
     private username: string;
     private client_id = 'a248528bc3b893e1940414f3d68ea123282031f0';
     private client_secret = 'a248528bc3b893e1940414f3d68ea123282031f0';
-    constructor(private http: HttpClient) {},
+    constructor(private http: HttpClient) {}
 
     getUser() {
         // tslint:disable-next-line:max-line-length
