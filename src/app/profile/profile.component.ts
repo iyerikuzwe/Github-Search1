@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { ProfileService } from "../services/profile.service";
-
+import {User} from '../user';
 @Component({
   selector: "app-profile",
   templateUrl: "profile.component.html",
@@ -11,7 +11,7 @@ export class ProfileComponent {
   repos: any;
   username: string;
   constructor(private profileService: ProfileService) {
-    console.log("profile service Init...");
+     console.log("profile service Init...");
   }
   search() {
     this.profileService.updateUserName(this.username);
