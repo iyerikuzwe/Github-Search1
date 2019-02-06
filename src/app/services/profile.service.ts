@@ -1,25 +1,67 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {User} from '../user';
+import {environment} from '../../environments/environment';
+import {Repo} from '../repo';
 
-@Injectable()
+
+@Injectable({
+  providedIn: 'root' // this service is declared that it should be created by the root application of injector.
+})
+
 export class ProfileService {
-    private username: string;
-    private client_id = 'a248528bc3b893e1940414f3d68ea123282031f0';
-    private client_secret = 'a248528bc3b893e1940414f3d68ea123282031f0';
-    constructor(private http: HttpClient) {}
+  repo: Repo; 
+    user: User;
 
-    getUser() {
-        // tslint:disable-next-line:max-line-length
-        return this.http.get('https://api.github.com/users/'+this.username+'?client_id='+this.client_id+'&client_secret='+this.client_secret);
-    }
+  private username: string;
+  items;
+  constructor(private http:HttpClient) { 
+    console.log ("wooooh so cool!!");
+    this.username = 'iyerikuzwe';
+    this.user = new User (' ',' ',' ',' ',' ',0,' ');
+    this.repo = new Repo (' ', ' ', ' ', ' ', ' ');
+  }
+  getProfileInfo(username){
+    interface ApiResponse {
+      name: string;
+      login: string;
+      avatar_url: string;
+      email: string;
+      location: string;
+      public_repos: number;
+      html_url: string;
+    // return this.http.get("https://api.github.com/users/" + this.username)
 
-    getRepos() {
-        // tslint:disable-next-line:max-line-length
-        return this.http.get('https://api.github.com/users/'+this.username+'/repos?client_id='+this.client_id+'&client_secret='+this.client_secret)
-    }
+  }
+  const promise = new Promise((resolve, reject) => {
+    this.http.get<ApiResponse>('https://api.github.com/users/' + username + '? access_token=bc643f5dde470bf4923dbba2e2b35ef14a1b1f59').toPromise().then(profile => {
+         this.user.name = profile.name;
+        this.user.login = profile.login;
+        this.user.avatar_url = profile.avatar_url;
+        this.user.email = profile.email;
+        this.user.location = profile.location;
+        this.user.public_repos = profile.public_repos;
+        this.user.html_url = profile.html_url;
 
-    updateUserName(username: string) {
-        this.username = username;
-    }
-
+        console.log(profile);
+         resolve();
+    },
+    
+    );
+});
+return promise;
+}
+getRepoInfo(username) {
+  interface ApiResponse {
+    name: string;
+    homepage: string;
+    description: string;
+    html_url: string;
+    clone_url: string;
+}
+this.http.get<ApiResponse>('https://api.github.com/users/' + username + '? access_token=bc643f5dde470bf4923dbba2e2b35ef14a1b1f59').subscribe(response => {
+  
+    this.items = response;  
+  });
+}
 }

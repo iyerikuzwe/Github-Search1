@@ -1,12 +1,13 @@
-import { Directive, ElementRef } from "@angular/core";
+import { Directive, ElementRef} from '@angular/core';
 
 @Directive({
-  selector: "[appStrikethrough]"
+  selector: '[appStrikethrough]'
 })
 export class StrikethroughDirective {
-  constructor(private elem: ElementRef) {}
 
-  private textDeco(action: string) {
-    this.elem.nativeElement.style.textDecoration = "line-through";
+  constructor(private elem:ElementRef) { }
+  
+  private textDeco(action:string){
+  this.elem.nativeElement.style.textDecoration='line-through';
   }
 }

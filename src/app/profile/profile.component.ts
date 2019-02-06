@@ -1,25 +1,23 @@
-import { Component } from "@angular/core";
-import { ProfileService } from "../services/profile.service";
-import {User} from '../user';
+
+import { Component, OnInit } from '@angular/core';
+import { ProfileService } from '..//services/profile.service';
+import {User} from '..//user';
+
 @Component({
-  selector: "app-profile",
-  templateUrl: "profile.component.html",
-  providers: [ProfileService]
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css'],
+  providers:[ProfileService]
 })
-export class ProfileComponent {
-  user: any;
-  repos: any;
-  username: string;
-  constructor(private profileService: ProfileService) {
-     console.log("profile service Init...");
+export class ProfileComponent implements OnInit {
+  user: User;
+  
+ constructor(private profileService: ProfileService, public repoService: ProfileService) { 
+ this.user = this.profileService.user;
+ }
+  ngOnInit() {
+    this.user = this.profileService.user;
+
   }
-  search() {
-    this.profileService.updateUserName(this.username);
-    this.profileService.getUser().subscribe(user => {
-      this.user = user;
-    });
-    this.profileService.getRepos().subscribe(repository => {
-      this.repos = repository;
-    });
-  }
+
 }
