@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   apiUrl:'https://api.github.com/users/',
-  apikey: '? access_token=bc643f5dde470bf4923dbba2e2b35ef14a1b1f59',
-  apiRepokey: '/repos?access_token=bc643f5dde470bf4923dbba2e2b35ef14a1b1f59',
+  apikey: '? access_token=9fb10c5e1b92d2953f295d4d4860ed0fc9e7661b',
+  apiRepokey: '/repos?access_token=9fb10c5e1b92d2953f295d4d4860ed0fc9e7661b',
 };
 
 /*

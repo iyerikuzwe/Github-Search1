@@ -3,7 +3,9 @@
 # compiled output
 /tmp
 /out-tsc
-
+apiUrl:'https://api.github.com/users/',
+  apikey: '? access_token=9fb10c5e1b92d2953f295d4d4860ed0fc9e7661b',
+  apiRepokey: '/repos?access_token=9fb10c5e1b92d2953f295d4d4860ed0fc9e7661b'
 # dependencies
 /node_modules
 

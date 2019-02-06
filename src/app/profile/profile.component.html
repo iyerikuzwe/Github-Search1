@@ -1,26 +1,104 @@
-<div class= "container">
-  <div class="jumbotron">
-    <h1>Github-Search</h1>
+<div class="row">
+  <div class="col-md-12">
+    <form>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Put in any username "
+          [(ngModel)]="username"
+          name="username"
+          (keyup)="search()"
+          size="60px"
+        />
+      </div>
+    </form>
   </div>
-  <div class="row">
-    <div class="col-md-6">
-     <app-form></app-form>
-      <a href="{{user.html_url}}" class="btn btn-success" id="view">Search</a>
+</div>
+
+<div *ngIf="user">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{ user.name }}</h3>
     </div>
-    <div class="col-md-6">
-      <table>
-        <tr>
-            <img src="{{user.avatar_url}}" alt="Avatar" class="avatar">
-        </tr>
-        <tr>
-          <td >username on github: </td>
-          <td class="label">{{user.login}}</td>
-        </tr>
-        <tr>
-          <td >Repositories: </td>
-          <td class="label">{{user.public_repos}}</td>
-        </tr>
-        </table>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-4">
+          <img
+            class="img-thumbnail github-avatar"
+            src="{{ user.avatar_url }}"
+          />
+        </div>
+        <div class="col-md-8">
+          <div class="stats">
+            <span class="label label-default"
+              >{{ user.public_repos }} Public Repos</span
+            ><br>
+            <span class="label label-primary"
+              >{{ user.public_gists }} Public Gists</span
+            ><br>
+            <span class="label label-success"
+              >{{ user.followers }} Followers</span
+            ><br>
+            <span class="label label-info">{{ user.following }} Following</span>
+          </div>
+          <br />
+          <ul class="list-group">
+            <li class="list-group-item">
+              <strong>Username: </strong>{{ user.login }}
+            </li>
+            <li class="list-group-item">
+              <strong>Repositories: </strong>{{ user.public_repos }}
+            </li>
+            <li class="list-group-item">
+              <strong>Followers: </strong>{{ user.followers }}
+            </li>
+
+            <li class="list-group-item">
+              <strong>Following: </strong>{{ user.following }}
+            </li>
+            <li class="list-group-item">
+              <strong>Email: </strong>{{ user.email }}
+            </li>
+            <li class="list-group-item">
+              <strong>Member on Github From: </strong>{{ user.created_at }}
+              
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Repos</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-12">
+          <div *ngFor="let repo of repos">
+            <div class="row">
+              <div class="col-md-9">
+                <h4>
+                  <a href="{{ repo.html_url }}" target="_blank">{{
+                    repo.name
+                  }}</a>
+                </h4>
+                <p>{{ repo.description }}</p>
+              </div><br>
+              <div class="col-md-3">
+                <span class="label label-default"
+                  >{{ repo.watchers }} Watchers</span>
+                </div><br>
+                <div class="col-md-3">
+                  <span class="label label-default">{{ repo.forks }} Forks</span>
+              
+            </div><br>
+            <hr />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -1,18 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { ProfileService } from '../services/profile.service';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+  selector: "app-form",
+  templateUrl: "./form.component.html",
+  styleUrls: ["./form.component.css"]
 })
 export class FormComponent implements OnInit {
+  constructor() {}
 
-  submitSearch(name) {
-    this.profileService.getProfileInfo(name.target.value);
-    this.repoService.getRepoInfo(name.target.value);
-  }
-   constructor(private profileService: ProfileService, private repoService: ProfileService) { }
-  ngOnInit() {
-  }
- }
+  ngOnInit() {}
+}
