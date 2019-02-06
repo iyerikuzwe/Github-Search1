@@ -1,6 +1,6 @@
 
 # Github-Search
-    Due on 06th Feb 2019 By iyerikuzwe
+    Done on 06th Feb 2019 By iyerikuzwe
 ## Description
     This webapp will enable a user to search a person on Github using their username whereby after entering their username in the app the user will check below the user-name and the number of repositories that person has, after the user will have an option of visiting the profile on github and see al of their information.
 
